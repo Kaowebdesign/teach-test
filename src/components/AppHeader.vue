@@ -4,7 +4,7 @@
       <b-row>
         <b-col class="d-flex justify-content-between">
           <h1 class="header__title">Trading platform</h1>
-          <v-select :options="langs" label="title" class="header__select">
+          <v-select :options="langs" label="title" class="header__select" v-model="selectedLang">
             <template #open-indicator="{ attributes }">
               <span v-bind="attributes">
                 <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,8 +12,14 @@
                 </svg>
               </span>
             </template>
+            <template #selected-option="{ title, icon }">
+              <div>
+                <img :src="require(`@/assets/${icon}`)" />
+                {{ title }}
+              </div>
+          </template>
             <template v-slot:option="option">
-              <img :src="'@/assets/en.png'" />
+              <img :src="require(`@/assets/${option.icon}`)" />
               {{ option.title }}
             </template>
           </v-select>
@@ -30,18 +36,16 @@
     name: 'AppHeader',
     data () {
       return {
-        options: [
-          {
-            icon: '1',
-            title: 'Eng'
-          }
-        ]
+        selectedLang: ''
       }
     },
     computed: {
       ...mapState([
         'langs'
       ])
+    },
+    created () {
+      this.selectedLang = this.langs[0];
     }
   }
 </script>
@@ -74,6 +78,9 @@
       background: #FFFFFF;
       box-shadow: 0px 10px 20px rgba(22, 23, 28, 0.08);
       border-radius: 6px;
+    }
+    .vs__search{
+      display: none;
     }
   }
 </style>

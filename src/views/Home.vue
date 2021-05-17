@@ -1,29 +1,25 @@
 <template>
   <div class="home">
     <app-header />
-    <b-container>
-      <b-row>
-        <b-col>
-          <chart/>
-        </b-col>
-      </b-row>
-    </b-container>
+    <home-chart />
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader';
-import Chart from '@/components/Chart';
-import {GET_KLINES} from '@/store/modules/trade';
+  // components
+  import AppHeader from '@/components/AppHeader';
+  import HomeChart from '@/components/HomeChart';
+    // store
+  import {GET_KLINES} from '@/store/modules/trade';
 
-export default {
-  name: 'Home',
-  components: {
-    Chart,
-    AppHeader
-  },
-  created () {
-    this.$store.dispatch(GET_KLINES);
+  export default {
+    name: 'Home',
+    components: {
+      AppHeader,
+      HomeChart
+    },
+    created () {
+      this.$store.dispatch(GET_KLINES);
+    }
   }
-}
 </script>

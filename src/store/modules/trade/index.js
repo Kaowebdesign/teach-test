@@ -13,12 +13,12 @@ export default {
     state:{
         symbols:[
             {
-                name: 'BTC/USD',
-                code: 'BTCUSDT'
+                id: 'BTCUSDT',
+                name: 'BTC/USD'
             },
             {
-                name: 'ETH/USD',
-                code: 'ETHUSD'
+                id: 'ETHUSD',
+                name: 'ETH/USD'
             }
         ],
         interval: [
@@ -48,20 +48,32 @@ export default {
         },
         langs: [
             {
-                icon: '../assets/en.png',
-                title: 'Eng'
+                icon: 'en.png',
+                title: 'END'
             },
             {
-                icon: '@/assets/deu.png',
-                title: 'Deu'
+                icon: 'deu.png',
+                title: 'DEU'
             },
             {
-                icon: '@/assets/ita.png',
-                title: 'Ita'
+                icon: 'ita.png',
+                title: 'ITA'
             },
             {
-                icon: '@/assets/fra.png',
-                title: 'Fra'
+                icon: 'fra.png',
+                title: 'FRA'
+            },
+            {
+                icon: 'jpn.png',
+                title: 'JPN'
+            },
+            {
+                icon: 'che.png',
+                title: 'CHE'
+            },
+            {
+                icon: 'rus.png',
+                title: 'RUS'
             }
         ]
     },
@@ -92,7 +104,7 @@ export default {
         async [GET_KLINES] ({commit, state}, payload) {
             try {
                 const params = {
-                    'symbol': state.symbols[0].code || payload.symbol,
+                    'symbol': state.symbols[0].id || payload.symbol,
                     'interval': state.interval[0].code || payload.interval
                 }
 
