@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -14,7 +10,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
+  background: #1A1714;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 #nav {
@@ -27,6 +28,11 @@
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+}
+@media (min-width: 1400px){
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+      max-width: 1140px !important;
   }
 }
 </style>

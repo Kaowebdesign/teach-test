@@ -1,18 +1,29 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <app-header />
+    <b-container>
+      <b-row>
+        <b-col>
+          <chart/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import AppHeader from '@/components/AppHeader';
+import Chart from '@/components/Chart';
+import {GET_KLINES} from '@/store/modules/trade';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Chart,
+    AppHeader
+  },
+  created () {
+    this.$store.dispatch(GET_KLINES);
   }
 }
 </script>
